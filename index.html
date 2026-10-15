@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OmniServe Lab Quality</title>
+<meta name="description" content="ISO/IEC 17025 documentation and ASTM QC tools for fuel, petroleum, and industrial testing laboratories, from OmniServe Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@600;700&family=Red+Hat+Text:wght@400;500;600&family=Red+Hat+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a calm technical document — narrow reading column, a control-chart hero, product cards as a three-step ladder, and an expert record set like a CV entry. */
+:root{
+  --bg:#F6F7F5; --surface:#FFFFFF; --ink:#18212A; --muted:#58646C; --line:#D6DCDC; --soft:#ECEFEE;
+  --accent:#9C5A0B; --accent-ink:#FFFFFF; --accent-soft:#F4E7D6;
+  --chart:#2E5E78; --limit:#B42318; --warn:#B7791F;
+  --f-display:"Red Hat Display","Helvetica Neue",Arial,sans-serif;
+  --f-body:"Red Hat Text","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Red Hat Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10161B; --surface:#172028; --ink:#E7ECEE; --muted:#9AA8B0; --line:#2B3740; --soft:#1C2730;
+  --accent:#E3A24F; --accent-ink:#1A1206; --accent-soft:#33261A;
+  --chart:#7FB3D1; --limit:#F0796C; --warn:#E0A64A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10161B; --surface:#172028; --ink:#E7ECEE; --muted:#9AA8B0; --line:#2B3740; --soft:#1C2730;
+  --accent:#E3A24F; --accent-ink:#1A1206; --accent-soft:#33261A;
+  --chart:#7FB3D1; --limit:#F0796C; --warn:#E0A64A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;line-height:1.15;text-decoration:none;color:var(--ink)}
+.brand b{font-family:var(--f-display);font-weight:700;font-size:19px}
+.brand span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+nav.links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+nav.links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500}
+nav.links a:hover{color:var(--ink)}
+nav.links a.btn,nav.links a.btn:hover{color:var(--accent-ink)}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;font-size:15px;padding:11px 18px;border-radius:6px;border:1px solid var(--accent)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.small{padding:7px 12px;font-size:14px}
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+section{padding-block:64px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,5.2vw,52px);line-height:1.08;letter-spacing:-.02em}
+h2{font-size:clamp(26px,3.6vw,36px);line-height:1.15}
+h3{font-size:21px;line-height:1.25}
+p{margin:0}
+.lead{font-size:18px;color:var(--muted);max-width:60ch}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-block:56px 48px}
+.hero > *{min-width:0}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero .copy{display:flex;flex-direction:column;gap:18px}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 16px 10px}
+.chart figcaption{font-family:var(--f-mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:6px}
+.chart svg{display:block;width:100%;height:auto}
+.proof{border-block:1px solid var(--line);background:var(--surface)}
+.proof .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.proof div.item{padding:20px 20px 20px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.proof div.item + div.item{padding-left:20px;border-left:1px solid var(--line)}
+.proof b{font-family:var(--f-mono);font-weight:500;font-size:13px;letter-spacing:.04em;color:var(--accent)}
+.proof span{font-size:15px}
+.sectionhead{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;max-width:680px}
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.card.feature{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+.card .tier{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.price{font-family:var(--f-display);font-size:38px;font-weight:700;line-height:1}
+.price small{font-family:var(--f-body);font-size:14px;font-weight:400;color:var(--muted)}
+.card ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--ink);font-size:15px}
+.card .foot{margin-top:auto;display:flex;flex-direction:column;gap:8px}
+.card .note{font-size:13px;color:var(--muted)}
+.method{font-family:var(--f-mono);font-size:13px;background:var(--soft);padding:1px 6px;border-radius:4px}
+.who{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.who div{border-top:2px solid var(--ink);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.who p{color:var(--muted);font-size:15px}
+.expert{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:start}
+.expert > *{min-width:0}
+.record{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;font-family:var(--f-mono);font-size:13px;display:flex;flex-direction:column;gap:10px}
+.record div{display:flex;flex-direction:column;gap:2px}
+.record dt,.record .k{color:var(--muted);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.timeline{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:14px}
+.timeline li{display:grid;grid-template-columns:140px 1fr;gap:16px;border-top:1px solid var(--line);padding-top:12px}
+.timeline li span{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.review{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+.review > *{min-width:0}
+.steps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px}
+details{border-top:1px solid var(--line);padding-block:16px}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--f-mono);color:var(--muted)}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted);max-width:68ch}
+footer{border-top:1px solid var(--line);padding-block:32px 48px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer .contact{display:flex;flex-direction:column;gap:4px}
+.copy-line{display:inline-flex;gap:8px;align-items:center}
+.copy-line button{font:500 12px var(--f-body);background:none;border:1px solid var(--line);border-radius:4px;color:var(--muted);padding:2px 8px;cursor:pointer}
+.disclaimer{max-width:70ch;font-size:13px}
+@media (max-width:860px){
+  .hero,.expert,.review{grid-template-columns:1fr}
+  .ladder{grid-template-columns:1fr}
+  .who{grid-template-columns:1fr}
+  .proof .wrap{grid-template-columns:1fr}
+  .proof div.item,.proof div.item + div.item{padding:14px 0;border-left:0;border-top:1px solid var(--line)}
+  .proof div.item:first-child{border-top:0}
+  nav.links a.navtext{display:none}
+  .timeline li{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion: no-preference){.chart .pt{transition:r .2s}}
+</style>
+
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top"><b>OmniServe Texas</b><span>Laboratory Quality &amp; Compliance</span></a>
+    <nav class="links" aria-label="Main">
+      <a class="navtext" href="#products">Products</a>
+      <a class="navtext" href="#expert">Who built it</a>
+      <a class="navtext" href="#faq">FAQ</a>
+      <a class="btn small" data-link="free" href="#">Free D4052 workbook</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div class="copy">
+      <p class="eyebrow">For fuel, petroleum &amp; industrial testing labs</p>
+      <h1>ISO/IEC 17025 documentation written by someone who has run a fuel testing lab.</h1>
+      <p class="lead">Method verification, uncertainty, and QC templates for lab quality managers preparing for accreditation, reassessment, or a CBP lab audit. Start with the free <span class="method">ASTM D4052</span> density QC workbook.</p>
+      <div class="cta">
+        <a class="btn" data-link="free" href="#">Download the free workbook</a>
+        <a class="btn ghost" href="#products">See all products</a>
+      </div>
+    </div>
+
+    <figure class="chart" aria-label="Illustration of a density check-standard control chart with one point outside the upper control limit">
+      <svg viewBox="0 0 440 250" role="img" aria-label="Density check standard control chart">
+        <g font-family="Red Hat Mono, monospace" font-size="10" fill="var(--muted)">
+          <text x="4" y="40">UCL</text><text x="4" y="125">CL</text><text x="4" y="210">LCL</text>
+        </g>
+        <line x1="40" x2="430" y1="37" y2="37" stroke="var(--limit)" stroke-dasharray="5 4"/>
+        <line x1="40" x2="430" y1="80" y2="80" stroke="var(--warn)" stroke-dasharray="2 4"/>
+        <line x1="40" x2="430" y1="122" y2="122" stroke="var(--muted)"/>
+        <line x1="40" x2="430" y1="164" y2="164" stroke="var(--warn)" stroke-dasharray="2 4"/>
+        <line x1="40" x2="430" y1="207" y2="207" stroke="var(--limit)" stroke-dasharray="5 4"/>
+        <polyline id="series" fill="none" stroke="var(--chart)" stroke-width="1.6"/>
+        <g id="points"></g>
+        <text x="40" y="244" font-family="Red Hat Mono, monospace" font-size="10" fill="var(--muted)">Run 1</text>
+        <text x="430" y="244" text-anchor="end" font-family="Red Hat Mono, monospace" font-size="10" fill="var(--muted)">Run 25</text>
+      </svg>
+      <figcaption><span>Check standard · density at 15 °C · kg/m³</span><span>Illustration</span></figcaption>
+    </figure>
+  </div>
+
+  <div class="proof">
+    <div class="wrap">
+      <div class="item"><b>EXPERIENCE</b><span>Built by the former QA manager of an ISO 17025-accredited Jet A-1 lab who helped set national fuel standards</span></div>
+      <div class="item"><b>METHOD-FIRST</b><span>Organized around the ASTM methods your scope and your assessor care about</span></div>
+      <div class="item"><b>TEXAS-BASED</b><span>A Gulf Coast company that can meet your team in person</span></div>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="sectionhead">
+        <p class="eyebrow">The kit</p>
+        <h2>Start free. Upgrade when you are ready.</h2>
+        <p class="lead">Each step builds on the one before it. Checkout runs through Payhip, with a receipt for your expense report.</p>
+      </div>
+      <div class="ladder">
+        <article class="card">
+          <span class="tier">Free</span>
+          <div class="price">$0</div>
+          <h3>ASTM D4052 Density QC Workbook (Lite)</h3>
+          <p>Control charts for digital density measurements in fuel labs, ready for your next check-standard run.</p>
+          <div class="foot">
+            <a class="btn ghost" data-link="free" href="#">Download free</a>
+            <span class="note">Best place to start</span>
+          </div>
+        </article>
+        <article class="card">
+          <span class="tier">Full workbook</span>
+          <div class="price">$79</div>
+          <h3>ASTM D4052 Density QC Workbook</h3>
+          <p>Validated control charts for ISO/IEC 17025 fuel labs: the complete version of the free workbook, ready for your assessor.</p>
+          <div class="foot">
+            <a class="btn" data-link="workbook" href="#">Buy for $79</a>
+            <span class="note">The full version of the free Lite workbook</span>
+          </div>
+        </article>
+        <article class="card feature">
+          <span class="tier">Method kit</span>
+          <div class="price">$297</div>
+          <h3>Jet A-1 Lab ISO/IEC 17025 Method Kit</h3>
+          <p>Method verification, measurement uncertainty, and QC templates for 11 ASTM methods used in Jet A-1 testing.</p>
+          <div class="foot">
+            <a class="btn" data-link="kit" href="#">Buy the method kit</a>
+            <span class="note">11 ASTM methods in one kit</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sectionhead">
+        <p class="eyebrow">Who it's for</p>
+        <h2>Labs whose results move cargo, refineries, and contracts</h2>
+      </div>
+      <div class="who">
+        <div><h3>Independent petroleum labs</h3><p>Small teams where the lab manager is also the quality manager, and documentation competes with daily testing.</p></div>
+        <div><h3>Inspection company labs</h3><p>Port and terminal labs with CBP-accredited methods such as D4052, D86, and D445 that must stay audit-ready.</p></div>
+        <div><h3>Labs seeking first accreditation</h3><p>Teams building an ISO/IEC 17025 quality system from scratch and needing a structure that already works.</p></div>
+        <div><h3>Refinery and terminal QC labs</h3><p>In-house labs tightening method control and records ahead of customer or regulatory audits.</p></div>
+        <div><h3>Resin, coatings &amp; chemical QC labs</h3><p>Manufacturing labs that release product against specifications and need traceable test records.</p></div>
+        <div><h3>Lubricant blending &amp; oil analysis labs</h3><p>Labs whose viscosity, density, and contamination results decide whether a batch ships.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="expert" style="background:var(--surface);border-block:1px solid var(--line)">
+    <div class="wrap expert">
+      <dl class="record">
+        <div><dt>Lab quality lead</dt><dd style="margin:0;font-size:15px;font-family:var(--f-body);font-weight:600">Dinku Adale</dd></div>
+        <div><dt>Education</dt><dd style="margin:0">B.S. Industrial Chemistry<br>M.S. Computer Science, Howard University<br>MBA</dd></div>
+        <div><dt>Standards</dt><dd style="margin:0">ISO/IEC 17025 · ISO 9001<br>ASTM &amp; IP test methods<br>National fuel standards</dd></div>
+        <div><dt>Industries</dt><dd style="margin:0">Aviation fuel · Fuel oils<br>Lubricants · Resins &amp; coatings</dd></div>
+      </dl>
+      <div>
+        <p class="eyebrow">Who built it</p>
+        <h2>From the lab bench to the quality system</h2>
+        <p class="lead" style="margin-top:12px">These documents come from running a fuel testing lab, setting national fuel standards, and managing quality in chemical manufacturing, not from a template library.</p>
+        <ul class="timeline">
+          <li><span>Lab quality</span><p>Established an ISO 9001 and ISO/IEC 17025-accredited oil and gas testing laboratory and served as its QA manager, including Jet A-1 testing to ASTM and IP methods and equipment calibration.</p></li>
+          <li><span>National standards</span><p>Helped set national fuel standards at a national quality and standards institute, including specifications for fuel oils and lubricants.</p></li>
+          <li><span>Chemical industry</span><p>Alkyd resin and coatings chemist and production manager, running formulation, process, and quality control in chemical manufacturing.</p></li>
+          <li><span>Compliance</span><p>Security and compliance consulting for oil and gas and public-sector clients, writing policy and risk frameworks against NIST standards.</p></li>
+          <li><span>Today</span><p>Turns that experience into documentation and QC tools for testing labs, with on-site support across the Texas Gulf Coast.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap review">
+      <div>
+        <p class="eyebrow">On request</p>
+        <h2>Assessment coming up?</h2>
+        <p class="lead" style="margin-top:12px">Ask about a readiness review of your quality system against ISO/IEC 17025, remotely or on site in the Houston, Beaumont, and Corpus Christi areas.</p>
+      </div>
+      <ol class="steps">
+        <li>Send your assessment date and current scope.</li>
+        <li>We agree on what to review and a fixed fee.</li>
+        <li>You receive a prioritized gap list before the assessor arrives.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap" style="max-width:820px">
+      <div class="sectionhead"><p class="eyebrow">FAQ</p><h2>Questions quality managers ask</h2></div>
+      <details><summary>Will these documents get my lab accredited?</summary><p>No document can guarantee accreditation. The kit gives your quality system a proven structure; your accreditation body assesses how your lab actually implements it. We say this plainly because your assessor will too.</p></details>
+      <details><summary>Who is behind OmniServe Texas Lab Quality?</summary><p>OmniServe Texas LLC, a Texas company. The documents are written by Dinku Adale, a former QA manager of an accredited fuel testing laboratory.</p></details>
+      <details><summary>Can my company pay with an invoice or purchase order?</summary><p>Online checkout through Payhip gives an immediate receipt. For a purchase order or invoice, email us and we will set it up.</p></details>
+      <details><summary>Can I get a refund?</summary><p>Because the products are digital and delivered instantly, all sales are final. Start with the free workbook to see the quality of the work before you buy.</p></details>
+      <details><summary>Can you visit our lab?</summary><p>Yes, across the Texas Gulf Coast. Email us with your location and what you need.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="contact">
+      <strong style="color:var(--ink)">OmniServe Texas LLC · Laboratory Quality &amp; Compliance</strong>
+      <span class="copy-line">info@omniservetexas.com <button type="button" data-copy="info@omniservetexas.com">Copy</button></span>
+      <span class="copy-line">(713) 609-3516 <button type="button" data-copy="(713) 609-3516">Copy</button></span>
+    </div>
+    <p class="disclaimer">Templates and tools support your quality system; they do not replace your lab's own procedures, validation, or the judgment of your accreditation body. ISO/IEC 17025 and ASTM method designations belong to their respective standards organizations; this site is not affiliated with ISO, ASTM, or any accreditation body.</p>
+  </div>
+</footer>
+
+<script>
+// Payhip product links. Paste each product's Payhip URL here.
+const LINKS = {
+  free: "https://payhip.com/b/0iQkM",
+  workbook: "https://payhip.com/b/LJ1Sk",
+  kit: "https://payhip.com/b/rgknT"
+};
+document.querySelectorAll("[data-link]").forEach(a => {
+  const url = LINKS[a.dataset.link];
+  if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+  else { a.setAttribute("aria-disabled", "true"); a.textContent = "Coming soon"; }
+});
+document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", () => {
+  const t = b.dataset.copy;
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(
+    () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); },
+    () => { const r = document.createRange(); r.selectNodeContents(b.parentNode.firstChild); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+  );
+}));
+// Control chart illustration: 25 runs around the center line, one excursion above UCL.
+(function(){
+  const vals=[0.1,-0.4,0.3,0.6,-0.2,0.2,-0.7,0.4,0.1,-0.3,0.5,0.9,1.3,3.3,0.4,-0.1,-0.6,0.2,0.0,-0.4,0.7,0.3,-0.2,0.1,-0.5];
+  const x=i=>40+i*(390/24), y=v=>122-v*28.3;
+  document.getElementById("series").setAttribute("points",vals.map((v,i)=>x(i)+","+y(v)).join(" "));
+  const g=document.getElementById("points");
+  vals.forEach((v,i)=>{const c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+    c.setAttribute("cx",x(i));c.setAttribute("cy",y(v));c.setAttribute("r",Math.abs(v)>3?5:3);
+    c.setAttribute("fill",Math.abs(v)>3?"var(--limit)":"var(--chart)");c.setAttribute("class","pt");g.appendChild(c);});
+})();
+</script>
+
+</body>
+</html>
