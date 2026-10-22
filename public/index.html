@@ -65,7 +65,7 @@ p{margin:0}
 .proof b{font-family:var(--f-mono);font-weight:500;font-size:13px;letter-spacing:.04em;color:var(--accent)}
 .proof span{font-size:15px}
 .sectionhead{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;max-width:680px}
-.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.ladder{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:stretch}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
 .card.feature{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
 .card .tier{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -207,6 +207,16 @@ footer .contact{display:flex;flex-direction:column;gap:4px}
             <span class="note">11 ASTM methods in one kit</span>
           </div>
         </article>
+        <article class="card feature">
+          <span class="tier">Method kit</span>
+          <div class="price">$397</div>
+          <h3>Diesel Lab ISO/IEC 17025 Method Kit</h3>
+          <p>Method verification, measurement uncertainty, and QC templates for 9 ASTM methods used in diesel testing, including D5453 sulfur for ULSD and cloud point, plus a validated calculated cetane index workbook.</p>
+          <div class="foot">
+            <a class="btn" data-link="diesel" href="#">Buy the diesel kit</a>
+            <span class="note">9 ASTM methods plus cetane index</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -294,7 +304,8 @@ footer .contact{display:flex;flex-direction:column;gap:4px}
 const LINKS = {
   free: "https://payhip.com/b/0iQkM",
   workbook: "https://payhip.com/b/LJ1Sk",
-  kit: "https://payhip.com/b/rgknT"
+  kit: "https://payhip.com/b/rgknT",
+  diesel: ""   // paste the Diesel Method Kit's Payhip link between the quotes; until then the button shows "Coming soon"
 };
 document.querySelectorAll("[data-link]").forEach(a => {
   const url = LINKS[a.dataset.link];
