@@ -133,6 +133,46 @@ footer a{color:#e9d9c4}
   .aud{grid-template-columns:1fr}
   .hero-copy{padding-bottom:30vh}
 }
+
+.ladder{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.ladder .panel{min-width:0}
+.ladder .panel .btn{margin-top:auto}
+.bignum{font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:3.4rem;line-height:1;margin-bottom:6px}
+.free .bignum{color:var(--ink)}
+.kit .bignum{color:#fff}
+.tiername{font-weight:700;font-size:.95rem;margin-bottom:8px;color:var(--ember-d)}
+.kit .tiername{color:var(--ember)}
+.panel .note{font-size:.88rem;margin:14px 0 18px;color:var(--soft)}
+.kit .note{color:#b9ad98}
+.who3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 36px}
+.who3 div{border-top:2px solid var(--ink);padding:18px 0 28px}
+.who3 b{display:block;font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:1.5rem;line-height:1.05;margin-bottom:6px}
+.who3 span{color:var(--soft);font-size:.96rem}
+.story{background:var(--paper2);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.story .wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:start}
+.story h2{max-width:11ch}
+.story .lead{margin-bottom:0}
+.timeline{list-style:none}
+.timeline li{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:2px solid var(--ink)}
+.timeline b{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:1.2rem;line-height:1.1}
+.timeline p{color:var(--soft);font-size:.96rem}
+.review .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+.steps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;color:var(--soft)}
+.faq .wrap>*{max-width:860px}
+details{border-top:1px solid var(--line);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-weight:700;color:var(--ember-d)}
+details[open] summary::after{content:"\2013"}
+details p{margin-top:10px;color:var(--soft);max-width:60ch}
+.contact{display:flex;flex-direction:column;gap:6px;margin-bottom:22px}
+.contact strong{color:#f3e9d8}
+.copy-line{display:inline-flex;gap:10px;align-items:center}
+.copy-line button{font:600 .75rem 'Hanken Grotesk',sans-serif;background:none;border:1px solid #5a5143;border-radius:3px;color:#cfc3ae;padding:2px 9px;cursor:pointer}
+.copy-line button:hover{border-color:var(--ember);color:var(--ember)}
+@media(max-width:860px){.ladder,.who3,.story .wrap,.review .wrap{grid-template-columns:1fr}.story .wrap,.review .wrap{gap:30px}.timeline li{grid-template-columns:1fr;gap:4px}}
 @media(prefers-reduced-motion:reduce){.flame,.flame2{animation:none}}
 </style>
 </head>
@@ -224,24 +264,24 @@ footer a{color:#e9d9c4}
 
 <div class="wrap hero-copy">
   <h1>Fuel lab compliance, from someone who has run the lab.</h1>
-  <p>ISO/IEC 17025 documentation and QC tools for fuel and petroleum testing laboratories. Start with the free ASTM D4052 density workbook.</p>
-  <a class="btn" href="https://payhip.com/b/LJ1Sk">Get the free workbook</a>
-  <a class="btn line" href="#products">See both products</a>
+  <p>Method verification, uncertainty and QC templates for lab quality managers preparing for accreditation, reassessment or a CBP lab audit. Start with the free ASTM D4052 density QC workbook.</p>
+  <a class="btn" data-link="free" href="https://payhip.com/b/0iQkM">Get the free workbook</a>
+  <a class="btn line" href="#products">See all products</a>
 </div>
 </header>
 
 <main>
 <section id="products">
 <div class="wrap">
-  <h2>Fuel lab tools, from free to full kit.</h2>
-  <p class="lead">Start with the free workbook. The method kits and fuller versions run up to $297 on Payhip.</p>
+  <h2>Start free. Upgrade when you are ready.</h2>
+  <p class="lead">Each step builds on the one before it. Checkout runs through Payhip, with a receipt for your expense report.</p>
 
-  <div class="products">
+  <div class="ladder">
     <article class="panel free">
-      <div class="price">Free version available</div>
-      <h3>ASTM D4052 Density QC Workbook</h3>
-      <p>Validated control charts for ISO 17025 fuel labs. Track density check-standard results against control limits and catch drift before it reaches a report.</p>
-
+      <div class="tiername">Free</div>
+      <div class="bignum">$0</div>
+      <h3>ASTM D4052 Density QC Workbook (Lite)</h3>
+      <p>Control charts for digital density measurements in fuel labs, ready for your next check-standard run.</p>
       <svg viewBox="0 0 520 190" role="img" aria-label="Example control chart with upper and lower control limits and one point flagged outside the limit">
         <rect x="0" y="0" width="520" height="190" fill="#f2e8c4"/>
         <g stroke="#1b1712" stroke-width="1.4" stroke-dasharray="6 5" opacity=".75">
@@ -259,38 +299,36 @@ footer a{color:#e9d9c4}
         </g>
         <circle cx="450" cy="14" r="8" fill="#ff5a1f" stroke="#1b1712" stroke-width="2"/>
       </svg>
-
-      <!-- TODO(owner): add exact contents of the Lite (free) and full workbook versions from the Payhip listings. -->
-      <a class="btn" href="https://payhip.com/b/LJ1Sk">Get it on Payhip</a>
+      <a class="btn" data-link="free" href="https://payhip.com/b/0iQkM">Download free</a>
     </article>
 
-    <div class="kits">
-      <article class="panel kit">
-        <div class="price">Method Kit</div>
-        <h3>Diesel Lab ISO/IEC 17025 Method Kit</h3>
-        <p>Nine ASTM methods documented for diesel testing laboratories working toward, or maintaining, ISO/IEC 17025. You adapt them to your own equipment and procedures.</p>
-        <div class="frac" role="img" aria-label="Boiling range bar from gasoline to residue with the diesel fraction highlighted">
-          <div class="frac-bar"><span class="g"></span><span class="j"></span><span class="d on"></span><span class="h"></span><span class="r"></span></div>
-          <div class="frac-lab"><span>Gasoline</span><span>Jet</span><span class="on">Diesel</span><span>Gas oil</span><span>Residue</span></div>
-        </div>
-        <!-- TODO(owner): confirm "nine ASTM methods" wording and which items are in each version. -->
-        <a class="btn" href="https://payhip.com/b/7dbsn">View on Payhip</a>
-      </article>
+    <article class="panel free">
+      <div class="tiername">Full workbook</div>
+      <div class="bignum">$79</div>
+      <h3>ASTM D4052 Density QC Workbook</h3>
+      <p>Validated control charts for ISO/IEC 17025 fuel labs. The complete version of the free workbook, ready for your assessor.</p>
+      <p class="note">The full version of the free Lite workbook.</p>
+      <a class="btn" data-link="workbook" href="https://payhip.com/b/LJ1Sk">Buy for $79</a>
+    </article>
 
-      <article class="panel kit">
-        <div class="price">Method Kit</div>
-        <h3>Jet A-1 Lab ISO 17025 Method Kit</h3>
-        <p>Verification and documentation materials for jet fuel testing laboratories working under ISO/IEC 17025.</p>
-        <div class="frac" role="img" aria-label="Boiling range bar from gasoline to residue with the jet fraction highlighted">
-          <div class="frac-bar"><span class="g"></span><span class="j on"></span><span class="d"></span><span class="h"></span><span class="r"></span></div>
-          <div class="frac-lab"><span>Gasoline</span><span class="on">Jet</span><span>Diesel</span><span>Gas oil</span><span>Residue</span></div>
-        </div>
-        <!-- TODO(owner): replace the store link with this product's own Payhip link (payhip.com/b/...) and confirm the description. -->
-        <a class="btn" href="https://payhip.com/OmniServeTexas">View on Payhip</a>
-      </article>
-    </div>
+    <article class="panel kit">
+      <div class="tiername">Method kit</div>
+      <div class="bignum">$297</div>
+      <h3>Jet A-1 Lab ISO/IEC 17025 Method Kit</h3>
+      <p>Method verification, measurement uncertainty and QC templates for 11 ASTM methods used in Jet A-1 testing.</p>
+      <div class="frac" role="img" aria-label="Boiling range bar with the jet fraction highlighted"><div class="frac-bar"><span class="g"></span><span class="j on"></span><span class="d"></span><span class="h"></span><span class="r"></span></div><div class="frac-lab"><span>Gasoline</span><span class="on">Jet</span><span>Diesel</span><span>Gas oil</span><span>Residue</span></div></div>
+      <a class="btn" data-link="kit" href="https://payhip.com/b/rgknT">Buy the method kit</a>
+    </article>
+
+    <article class="panel kit">
+      <div class="tiername">Method kit</div>
+      <div class="bignum">$397</div>
+      <h3>Diesel Lab ISO/IEC 17025 Method Kit</h3>
+      <p>Method verification, measurement uncertainty and QC templates for 9 ASTM methods used in diesel testing, including D5453 sulfur for ULSD and cloud point, plus a validated calculated cetane index workbook.</p>
+      <div class="frac" role="img" aria-label="Boiling range bar with the diesel fraction highlighted"><div class="frac-bar"><span class="g"></span><span class="j"></span><span class="d on"></span><span class="h"></span><span class="r"></span></div><div class="frac-lab"><span>Gasoline</span><span>Jet</span><span class="on">Diesel</span><span>Gas oil</span><span>Residue</span></div></div>
+      <a class="btn" data-link="diesel" href="https://payhip.com/b/7dbsn">Buy the diesel kit</a>
+    </article>
   </div>
-  <p class="all">Every product and version is listed in the <a href="https://payhip.com/OmniServeTexas">OmniServe Texas store on Payhip</a>.</p>
 </div>
 </section>
 
@@ -298,47 +336,66 @@ footer a{color:#e9d9c4}
 <div class="wrap">
   <h2>Written at the bench, not at a desk.</h2>
   <ul>
-    <li><b>From a working quality role</b>Authored by a quality manager with hands-on experience running ISO/IEC 17025 fuel testing.</li>
-    <li><b>Built around real methods</b>Starts with ASTM D4052 density, the measurement every fuel lab repeats daily.</li>
-    <li><b>Try before you buy</b>The free workbook lets you judge the quality before spending anything.</li>
+    <li><b>Experience</b>Built by the former QA manager of an ISO 17025-accredited Jet A-1 lab who helped set national fuel standards.</li>
+    <li><b>Method-first</b>Organized around the ASTM methods your scope and your assessor care about.</li>
+    <li><b>Texas-based</b>A Gulf Coast company that can meet your team in person.</li>
   </ul>
 </div>
 </section>
 
 <section>
 <div class="wrap">
-  <h2>Who uses it.</h2>
-  <p class="lead">For the people who keep a fuel lab's records ready for an assessor.</p>
-  <div class="aud">
-    <div><b>Lab managers</b><span>Keep QC records consistent and easy to defend.</span></div>
-    <div><b>Quality managers</b><span>Stop building documentation from a blank page.</span></div>
-    <div><b>Analysts</b><span>Use clear charts for routine density checks.</span></div>
-    <div><b>Growing labs</b><span>Start free and add depth only when you need it.</span></div>
+  <h2>Labs whose results move cargo, refineries and contracts.</h2>
+  <p class="lead">Six kinds of lab use these tools to stay audit-ready.</p>
+  <div class="who3">
+    <div><b>Independent petroleum labs</b><span>Small teams where the lab manager is also the quality manager, and documentation competes with daily testing.</span></div>
+    <div><b>Inspection company labs</b><span>Port and terminal labs with CBP-accredited methods such as D4052, D86 and D445 that must stay audit-ready.</span></div>
+    <div><b>Labs seeking first accreditation</b><span>Teams building an ISO/IEC 17025 quality system from scratch and needing a structure that already works.</span></div>
+    <div><b>Refinery and terminal QC labs</b><span>In-house labs tightening method control and records ahead of customer or regulatory audits.</span></div>
+    <div><b>Resin, coatings and chemical QC labs</b><span>Manufacturing labs that release product against specifications and need traceable test records.</span></div>
+    <div><b>Lubricant blending and oil analysis labs</b><span>Labs whose viscosity, density and contamination results decide whether a batch ships.</span></div>
   </div>
 </div>
 </section>
 
-<section class="bound">
+<section class="story">
 <div class="wrap">
-  <h2>What this is, and what it isn't.</h2>
-  <div class="cols" style="margin-top:34px">
-    <div>
-      <h3>It is</h3>
-      <ul>
-        <li>Working tools and documentation you adapt to your lab</li>
-        <li>A structured starting point for your quality system</li>
-        <li>An instant digital download from Payhip</li>
-      </ul>
-    </div>
-    <div>
-      <h3>It isn't</h3>
-      <ul>
-        <li>A guarantee of accreditation or any audit result</li>
-        <li>A replacement for your accreditation body's requirements</li>
-        <li>A copy of the standards, which you buy from the publishers</li>
-      </ul>
-    </div>
+  <div>
+    <h2>From the lab bench to the quality system.</h2>
+    <p class="lead" style="margin-top:16px">These documents come from running a fuel testing lab, setting national fuel standards and managing quality in chemical manufacturing, not from a template library.</p>
   </div>
+  <ul class="timeline">
+    <li><b>Lab quality</b><p>Established an ISO 9001 and ISO/IEC 17025-accredited oil and gas testing laboratory and served as its QA manager, including Jet A-1 testing to ASTM and IP methods and equipment calibration.</p></li>
+    <li><b>National standards</b><p>Helped set national fuel standards at a national quality and standards institute, including specifications for fuel oils and lubricants.</p></li>
+    <li><b>Chemical industry</b><p>Alkyd resin and coatings chemist and production manager, running formulation, process and quality control in chemical manufacturing.</p></li>
+    <li><b>Compliance</b><p>Security and compliance consulting for oil and gas and public-sector clients, writing policy and risk frameworks against NIST standards.</p></li>
+    <li><b>Today</b><p>Turns that experience into documentation and QC tools for testing labs, with on-site support across the Texas Gulf Coast.</p></li>
+  </ul>
+</div>
+</section>
+
+<section class="review">
+<div class="wrap">
+  <div>
+    <h2>Assessment coming up?</h2>
+    <p class="lead" style="margin:14px 0 0">Ask about a readiness review of your quality system against ISO/IEC 17025, remotely or on site in the Houston, Beaumont and Corpus Christi areas.</p>
+  </div>
+  <ol class="steps">
+    <li>Send your assessment date and current scope.</li>
+    <li>We agree on what to review and a fixed fee.</li>
+    <li>You receive a prioritized gap list before the assessor arrives.</li>
+  </ol>
+</div>
+</section>
+
+<section class="faq" style="padding-top:0">
+<div class="wrap">
+  <h2 style="margin-bottom:28px">Questions quality managers ask.</h2>
+  <details><summary>Will these documents get my lab accredited?</summary><p>No document can guarantee accreditation. The kit gives your quality system a proven structure; your accreditation body assesses how your lab actually implements it. We say this plainly because your assessor will too.</p></details>
+  <details><summary>Who is behind OmniServe Texas Lab Quality?</summary><p>OmniServe Texas LLC, a Texas company. The documents are written by a former QA manager of an accredited fuel testing laboratory.</p></details>
+  <details><summary>Can my company pay with an invoice or purchase order?</summary><p>Online checkout through Payhip gives an immediate receipt. For a purchase order or invoice, email us and we will set it up.</p></details>
+  <details><summary>Can I get a refund?</summary><p>Because the products are digital and delivered instantly, all sales are final. Start with the free workbook to see the quality of the work before you buy.</p></details>
+  <details><summary>Can you visit our lab?</summary><p>Yes, across the Texas Gulf Coast. Email us with your location and what you need.</p></details>
 </div>
 </section>
 
@@ -346,20 +403,30 @@ footer a{color:#e9d9c4}
 <div class="wrap">
   <div>
     <h2>Start with the free workbook.</h2>
-    <p>No cost and no commitment. The Method Kit is there when your lab is ready.</p>
+    <p>No cost and no commitment. The method kits are there when your lab is ready.</p>
   </div>
-  <a class="btn" href="https://payhip.com/b/LJ1Sk">Get the free workbook</a>
+  <a class="btn" data-link="free" href="https://payhip.com/b/0iQkM">Get the free workbook</a>
 </div>
 </section>
 </main>
 
 <footer>
 <div class="wrap">
-  <p>OmniServe Texas LLC, DBA Atronus Technologies, Inc. Visit <a href="https://omniservetexas.com">omniservetexas.com</a>.</p>
-  <p>These products are independent. They are not affiliated with, endorsed by or sponsored by ASTM International, ISO, IEC or any accreditation body. ASTM, ISO and IEC are trademarks of their respective owners. Use of these materials does not guarantee accreditation or any audit result.</p>
-  <p>All products are digital downloads. All sales are final.</p>
+  <div class="contact">
+    <strong>OmniServe Texas LLC, Laboratory Quality &amp; Compliance</strong>
+    <span class="copy-line">info@omniservetexas.com <button type="button" data-copy="info@omniservetexas.com">Copy</button></span>
+    <span class="copy-line">(713) 609-3516 <button type="button" data-copy="(713) 609-3516">Copy</button></span>
+  </div>
+  <p>Templates and tools support your quality system; they do not replace your lab's own procedures, validation or the judgment of your accreditation body. ISO/IEC 17025 and ASTM method designations belong to their respective standards organizations. This site is not affiliated with, endorsed by or sponsored by ISO, IEC, ASTM or any accreditation body.</p>
+  <p>All products are digital downloads. All sales are final. Atronus Technologies, Inc. is a DBA of OmniServe Texas LLC.</p>
 </div>
 </footer>
+<script>
+document.querySelectorAll("[data-copy]").forEach(function(b){b.addEventListener("click",function(){
+  var t=b.dataset.copy;
+  if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1500)},function(){})}
+})});
+</script>
 
 </body>
 </html>
